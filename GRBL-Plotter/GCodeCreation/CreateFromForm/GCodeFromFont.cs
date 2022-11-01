@@ -101,6 +101,8 @@ namespace GrblPlotter
             public Glyph(double tx, string td)
             { X = tx; D = td; }
         }
+
+
         private static Dictionary<string, Glyph> svgGlyphs = new Dictionary<string, Glyph>();
 
         // Trace, Debug, Info, Warn, Error, Fatal
@@ -464,7 +466,9 @@ namespace GrblPlotter
                 var tokens = Regex.Split(tmpGlyph.D, separators).Where(t => !string.IsNullOrEmpty(t));
                 int token_cnt = 0;
                 foreach (string token in tokens)
-                { DrawToken(token, offsetX + GCOffX, offsetY + GCOffY, scale, token_cnt++, false); }
+                {
+                    DrawToken(token, offsetX + GCOffX, offsetY + GCOffY, scale, token_cnt++, false);
+                }
             }
             offsetX += tmpGlyph.X * scale + GCFontDistance; //double.Parse(svgsplit[1]) * scale + gcFontDistance;
             isSameWord = true;
@@ -486,6 +490,7 @@ namespace GrblPlotter
             }
             else
             {
+                //iterate each font to get each letter's glyph
                 for (lineIndex = 0; lineIndex < txtFont.Length; lineIndex++)
                 {
                     if ((txtFont[lineIndex].Length > 0) && (txtFont[lineIndex][0] == '['))

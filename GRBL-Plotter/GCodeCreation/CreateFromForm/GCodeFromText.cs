@@ -191,6 +191,7 @@ namespace GrblPlotter
         private void CBTool_SelectedIndexChanged(object sender, EventArgs e)
         {
             string tmp = cBTool.SelectedItem.ToString();
+            //this is the distance from here 
             if (tmp.IndexOf(")") > 0)
             {
                 int tnr = int.Parse(tmp.Substring(0, tmp.IndexOf(")")), culture);
